@@ -1,6 +1,6 @@
 // test/exampleRoute.test.js
 const tap = require("tap");
-const buildFastify = require("server"); // Assure-toi que le chemin est correct
+const buildFastify = require("../src/server"); // Assure-toi que le chemin est correct
 const supertest = require("supertest");
 
 tap.test("Example routes", async (t) => {

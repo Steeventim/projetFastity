@@ -1,0 +1,11 @@
+Error: /home/tims/Dev/FastifyProjet/myproject/app.js doesn't exist within /home/tims/Dev/FastifyProjet/myproject
+    at requireServerPluginFromPath [90m(/home/tims/Dev/FastifyProjet/myproject/[39mnode_modules/[4mfastify-cli[24m/util.js:74:11[90m)[39m
+    at runFastify [90m(/home/tims/Dev/FastifyProjet/myproject/[39mnode_modules/[4mfastify-cli[24m/start.js:115:18[90m)[39m
+    at build [90m(/home/tims/Dev/FastifyProjet/myproject/[39mnode_modules/[4mfastify-cli[24m/helper.js:13:12[90m)[39m
+    at build [90m(/home/tims/Dev/FastifyProjet/myproject/[39mtest/helper.js:24:21[90m)[39m
+    at TestContext.<anonymous> [90m(/home/tims/Dev/FastifyProjet/myproject/[39mtest/example.test.js:8:21[90m)[39m
+[90m    at Test.runInAsyncScope (node:async_hooks:206:9)[39m
+[90m    at Test.run (node:internal/test_runner/test:865:25)[39m
+[90m    at Test.processPendingSubtests (node:internal/test_runner/test:574:18)[39m
+[90m    at node:internal/test_runner/harness:249:20[39m
+[90m    at node:internal/process/task_queues:140:7[39m

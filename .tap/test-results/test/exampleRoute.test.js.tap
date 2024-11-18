@@ -1,0 +1,42 @@
+TAP version 14
+# Subtest: Example routes
+    not ok 1 - fastify.ready is not a function
+      ---
+      stack: |
+        Test.<anonymous> (test/exampleRoute.test.js:8:17)
+      at:
+        fileName: test/exampleRoute.test.js
+        lineNumber: 8
+        columnNumber: 17
+        typeName: Test
+        methodName: <anonymous>
+        functionName: Test.<anonymous>
+      type: TypeError
+      tapCaught: returnedPromiseRejection
+      source: |
+        tap.test("Example routes", async (t) => {
+          const fastify = buildFastify();
+          await fastify.ready();
+        ----------------^
+      
+          t.teardown(() => fastify.close());
+      ...
+    
+    1..1
+not ok 1 - Example routes # time=354.194ms
+  ---
+  at:
+    fileName: test/exampleRoute.test.js
+    lineNumber: 6
+    columnNumber: 5
+    typeName: Object
+  source: |
+    const supertest = require("supertest");
+  
+    tap.test("Example routes", async (t) => {
+    ----^
+      const fastify = buildFastify();
+      await fastify.ready();
+  ...
+
+1..1

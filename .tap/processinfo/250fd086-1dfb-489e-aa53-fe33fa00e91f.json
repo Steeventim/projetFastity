@@ -1,8 +1,8 @@
 {
-  "date": "2024-11-18T11:36:51.956Z",
+  "date": "2024-11-18T12:28:20.157Z",
   "argv": [
     "/home/tims/.nvm/versions/node/v22.6.0/bin/node",
-    "/home/tims/Dev/FastifyProjet/myproject/src/test/example.test.js"
+    "/home/tims/Dev/FastifyProjet/myproject/test/auth.test.js"
   ],
   "execArgv": [
     "--import=file:///home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
@@ -12,12 +12,12 @@
   ],
   "NODE_OPTIONS": "\"--import=file:///home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/processinfo/dist/esm/import.mjs\"",
   "cwd": "/home/tims/Dev/FastifyProjet/myproject",
-  "pid": 18566,
-  "ppid": 18531,
+  "pid": 21437,
+  "ppid": 21408,
   "parent": null,
-  "uuid": "bbec8eee-95d1-4157-bbb8-75598b6e1386",
+  "uuid": "250fd086-1dfb-489e-aa53-fe33fa00e91f",
   "files": [
-    "/home/tims/Dev/FastifyProjet/myproject/src/test/example.test.js",
+    "/home/tims/Dev/FastifyProjet/myproject/test/auth.test.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import-loader.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/import.mjs",
@@ -39,42 +39,42 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-conditional-value.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-import.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/is-windows.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/errors.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/file-exists.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-dependency-export.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-package-import.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-file-url.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-path.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/stack/dist/esm/parse.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-conditional-values-list.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/errors.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-named-exports-list.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/read-pkg.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-export.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/star-glob.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-path.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/file-exists.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/find-dep-package.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/walk-up-path/dist/esm/index.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-file-url.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-dependency-export.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-package-import.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/find-star-match.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/read-json.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/index.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/walk-up-path/dist/esm/index.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/read-json.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/index.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/glob.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/has-magic.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/ignore.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/assert-valid-pattern.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/ast.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/escape.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/dist/esm/index.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/pattern.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/minipass/dist/esm/index.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/processor.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/loader.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/hooks.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/mock-service-client.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/test/helper.js"
+    "/home/tims/Dev/FastifyProjet/myproject/src/server.js"
   ],
   "sources": {
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/import.mjs": [
@@ -134,29 +134,14 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/is-windows.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/is-windows.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/errors.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/errors.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/file-exists.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/file-exists.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-dependency-export.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-dependency-export.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-package-import.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-package-import.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-file-url.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/to-file-url.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-path.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/to-path.ts"
-    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/stack/dist/esm/parse.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/stack/src/parse.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-conditional-values-list.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/get-conditional-values-list.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/errors.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/errors.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-named-exports-list.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/get-named-exports-list.ts"
@@ -170,20 +155,35 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/star-glob.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/star-glob.ts"
     ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-path.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/to-path.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/file-exists.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/file-exists.ts"
+    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/find-dep-package.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/find-dep-package.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/walk-up-path/dist/esm/index.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/walk-up-path/src/index.ts"
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/to-file-url.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/to-file-url.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-dependency-export.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-dependency-export.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-package-import.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-package-import.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/find-star-match.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/find-star-match.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/read-json.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/read-json.ts"
-    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/index.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/index.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/walk-up-path/dist/esm/index.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/walk-up-path/src/index.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/read-json.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/read-json.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/index.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/index.ts"
@@ -203,11 +203,11 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/ast.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/ast.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/unescape.ts"
-    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/escape.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/escape.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/unescape.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/dist/esm/index.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/src/index.ts"
@@ -218,6 +218,9 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/walker.ts"
     ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/brace-expressions.ts"
+    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/src/index.ts"
     ],
@@ -226,14 +229,11 @@
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/processor.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/processor.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/brace-expressions.ts"
     ]
   },
-  "root": "bbec8eee-95d1-4157-bbb8-75598b6e1386",
-  "externalID": "src/test/example.test.js",
+  "root": "250fd086-1dfb-489e-aa53-fe33fa00e91f",
+  "externalID": "test/auth.test.js",
   "code": 1,
   "signal": null,
-  "runtime": 7084.754651
+  "runtime": 10220.825936
 }

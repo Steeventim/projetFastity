@@ -1,11 +1,11 @@
 // test/auth.test.js
 const tap = require("tap");
-const buildFastify = require("server"); // Assure-toi que le chemin est correct
+const buildFastify = require("../src/server"); // Assure-toi que le chemin est correct
 const supertest = require("supertest");
 
 tap.test("Authentication routes", async (t) => {
   const fastify = buildFastify();
-  await fastify.ready();
+  await fastify.listen(3000); // Remplacez ready() par listen()
 
   t.teardown(() => fastify.close());
 
