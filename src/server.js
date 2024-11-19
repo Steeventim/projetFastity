@@ -3,21 +3,24 @@
 const path = require("node:path");
 const AutoLoad = require("@fastify/autoload");
 const fastifyJwt = require("fastify-jwt");
+const fastify = require("fastify");
 
-module.exports = async function (fastify, opts) {
+module.exports = function buildFastify() {
+  const app = fastify({ logger: true });
+
   // Gestion des erreurs
-  fastify.setErrorHandler((error, request, reply) => {
+  app.setErrorHandler((error, request, reply) => {
     console.error(error); // Journaliser l'erreur
     reply.status(500).send({ error: "Une erreur est survenue" });
   });
 
   // Configurer le plugin JWT
-  fastify.register(fastifyJwt, {
+  app.register(fastifyJwt, {
     secret: "supersecretkey", // Utilise une clé secrète forte
   });
 
   // Middleware d'authentification
-  fastify.decorate("authenticate", async function (request, reply) {
+  fastify.decorate("authenticate", async (request, reply) => {
     try {
       await request.jwtVerify();
     } catch (err) {
@@ -26,27 +29,28 @@ module.exports = async function (fastify, opts) {
   });
 
   // Chargement des plugins
-  fastify.register(AutoLoad, {
+  app.register(AutoLoad, {
     dir: path.join(__dirname, "plugins"),
-    options: Object.assign({}, opts),
+    options: {},
   });
 
   // Chargement des routes
-  fastify.register(AutoLoad, {
+  app.register(AutoLoad, {
     dir: path.join(__dirname, "routes"),
-    options: Object.assign({}, opts),
+    options: {},
   });
+
+  return app;
 };
 
 if (require.main === module) {
-  const fastify = require("fastify")({ logger: true });
-  fastify.register(module.exports);
+  const app = buildFastify();
 
-  fastify.listen({ port: 3000 }, (err, address) => {
+  app.listen({ port: 3000 }, (err, address) => {
     if (err) {
-      fastify.log.error(err);
+      app.log.error(err);
       process.exit(1);
     }
-    fastify.log.info(`Server listening at ${address}`);
+    app.log.info(`Server listening at ${address}`);
   });
 }

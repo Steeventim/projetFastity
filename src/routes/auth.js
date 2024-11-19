@@ -1,9 +1,18 @@
-// src/routes/auth.js
+const users = []; // Remplacez cela par votre base de données
+
 async function authRoutes(fastify, options) {
   // Route de signup
   fastify.post("/signup", async (request, reply) => {
     const { username, password } = request.body;
-    // Stocker l'utilisateur dans la base de données (code à implémenter)
+
+    // Vérifiez si l'utilisateur existe déjà
+    const existingUser = users.find((user) => user.username === username);
+    if (existingUser) {
+      return reply.status(400).send({ error: "User  already exists" });
+    }
+
+    // Stocker l'utilisateur dans la base de données (ici, un tableau pour l'exemple)
+    users.push({ username, password }); // En pratique, hachez le mot de passe
     const token = fastify.jwt.sign({ username });
     return { token };
   });
@@ -11,7 +20,15 @@ async function authRoutes(fastify, options) {
   // Route de login
   fastify.post("/login", async (request, reply) => {
     const { username, password } = request.body;
-    // Vérifier l'utilisateur dans la base de données (code à implémenter)
+
+    // Vérifiez l'utilisateur dans la base de données
+    const user = users.find(
+      (user) => user.username === username && user.password === password
+    );
+    if (!user) {
+      return reply.status(401).send({ error: "Invalid username or password" });
+    }
+
     const token = fastify.jwt.sign({ username });
     return { token };
   });

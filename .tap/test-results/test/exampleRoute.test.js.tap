@@ -1,29 +1,64 @@
 TAP version 14
+{"level":50,"time":1732021899800,"pid":101953,"hostname":"tims-Latitude-E5470","msg":"Unable to connect to the database:"}
+{"level":30,"time":1732021899962,"pid":101953,"hostname":"tims-Latitude-E5470","reqId":"req-1","req":{"method":"GET","url":"/example/hello","host":"127.0.0.1:44841","remoteAddress":"::ffff:127.0.0.1","remotePort":59636},"msg":"incoming request"}
+{"level":30,"time":1732021899968,"pid":101953,"hostname":"tims-Latitude-E5470","reqId":"req-1","msg":"Route GET:/example/hello not found"}
+{"level":30,"time":1732021899979,"pid":101953,"hostname":"tims-Latitude-E5470","reqId":"req-1","res":{"statusCode":404},"responseTime":12.628698006272316,"msg":"request completed"}
 # Subtest: Example routes
-    not ok 1 - fastify.ready is not a function
+    not ok 1 - Hello route should respond with status 200
       ---
-      stack: |
-        Test.<anonymous> (test/exampleRoute.test.js:8:17)
+      compare: ===
       at:
         fileName: test/exampleRoute.test.js
-        lineNumber: 8
-        columnNumber: 17
+        lineNumber: 15
+        columnNumber: 5
         typeName: Test
-        methodName: <anonymous>
-        functionName: Test.<anonymous>
-      type: TypeError
-      tapCaught: returnedPromiseRejection
-      source: |
-        tap.test("Example routes", async (t) => {
-          const fastify = buildFastify();
-          await fastify.ready();
-        ----------------^
+      stack: |
+        Test.<anonymous> (test/exampleRoute.test.js:15:5)
+      source: |2
+          const helloResponse = await supertest(app.server).get("/example/hello");
       
-          t.teardown(() => fastify.close());
+          t.equal(
+        ----^
+            helloResponse.status,
+            200,
+      diff: |
+        --- expected
+        +++ actual
+        @@ -1,1 +1,1 @@
+        -200
+        +404
       ...
     
-    1..1
-not ok 1 - Example routes # time=354.194ms
+    not ok 2 - Hello route should return the correct greeting message
+      ---
+      diff: |
+        --- expected
+        +++ actual
+        @@ -1,3 +1,5 @@
+         Object {
+        -  "greeting": "Hello, world!",
+        +  "message": "Route GET:/example/hello not found",
+        +  "error": "Not Found",
+        +  "statusCode": 404,
+         }
+      at:
+        fileName: test/exampleRoute.test.js
+        lineNumber: 20
+        columnNumber: 5
+        typeName: Test
+      stack: |
+        Test.<anonymous> (test/exampleRoute.test.js:20:5)
+      source: |2
+            "Hello route should respond with status 200"
+          );
+          t.same(
+        ----^
+            helloResponse.body,
+            { greeting: "Hello, world!" },
+      ...
+    
+    1..2
+not ok 1 - Example routes # time=1071.734ms
   ---
   at:
     fileName: test/exampleRoute.test.js
@@ -35,8 +70,8 @@ not ok 1 - Example routes # time=354.194ms
   
     tap.test("Example routes", async (t) => {
     ----^
-      const fastify = buildFastify();
-      await fastify.ready();
+      const app = buildFastify();
+      await app.ready();
   ...
 
 1..1

@@ -1,16 +1,16 @@
 // test/exampleRoute.test.js
 const tap = require("tap");
-const buildFastify = require("../src/server"); // Assure-toi que le chemin est correct
+const buildFastify = require("../src/server");
 const supertest = require("supertest");
 
 tap.test("Example routes", async (t) => {
-  const fastify = buildFastify();
-  await fastify.ready();
+  const app = buildFastify();
+  await app.ready();
 
-  t.teardown(() => fastify.close());
+  t.teardown(() => app.close());
 
   // Test de la route /hello
-  const helloResponse = await supertest(fastify.server).get("/example/hello");
+  const helloResponse = await supertest(app.server).get("/example/hello");
 
   t.equal(
     helloResponse.status,

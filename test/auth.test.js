@@ -1,16 +1,16 @@
 // test/auth.test.js
 const tap = require("tap");
-const buildFastify = require("../src/server"); // Assure-toi que le chemin est correct
+const buildFastify = require("../src/server");
 const supertest = require("supertest");
 
 tap.test("Authentication routes", async (t) => {
-  const fastify = buildFastify();
-  await fastify.listen(3000); // Remplacez ready() par listen()
+  const app = buildFastify();
+  await app.ready();
 
-  t.teardown(() => fastify.close());
+  t.teardown(() => app.close());
 
   // Test de la route signup
-  const signupResponse = await supertest(fastify.server)
+  const signupResponse = await supertest(app.server)
     .post("/auth/signup")
     .send({ username: "testuser", password: "testpassword" });
 
@@ -24,7 +24,7 @@ tap.test("Authentication routes", async (t) => {
   const token = signupResponse.body.token;
 
   // Test de la route protégée
-  const protectedResponse = await supertest(fastify.server)
+  const protectedResponse = await supertest(app.server)
     .get("/auth/protected")
     .set("Authorization", `Bearer ${token}`);
 

@@ -1,8 +1,8 @@
 {
-  "date": "2024-11-18T12:28:20.344Z",
+  "date": "2024-11-19T13:11:35.318Z",
   "argv": [
     "/home/tims/.nvm/versions/node/v22.6.0/bin/node",
-    "/home/tims/Dev/FastifyProjet/myproject/test/example.test.js"
+    "/home/tims/Dev/FastifyProjet/myproject/test/auth.test.js"
   ],
   "execArgv": [
     "--import=file:///home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
@@ -12,12 +12,12 @@
   ],
   "NODE_OPTIONS": "\"--import=file:///home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/processinfo/dist/esm/import.mjs\"",
   "cwd": "/home/tims/Dev/FastifyProjet/myproject",
-  "pid": 21444,
-  "ppid": 21408,
+  "pid": 101947,
+  "ppid": 101925,
   "parent": null,
-  "uuid": "2c34da82-1e37-4595-b0d3-4681b56d397a",
+  "uuid": "8acbb25a-b8e8-4747-ad2f-bc7fc366cdd4",
   "files": [
-    "/home/tims/Dev/FastifyProjet/myproject/test/example.test.js",
+    "/home/tims/Dev/FastifyProjet/myproject/test/auth.test.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import-loader.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/import.mjs",
@@ -35,12 +35,12 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-all-conditions.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-unique-condition-sets.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-all-exports.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-conditional-value.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-all-local-imports.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-conditional-value.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-import.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/is-windows.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-conditional-values-list.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/stack/dist/esm/parse.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-conditional-values-list.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/errors.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-named-exports-list.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/read-pkg.js",
@@ -74,7 +74,14 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/loader.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/hooks.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/mock-service-client.js",
-    "/home/tims/Dev/FastifyProjet/myproject/test/helper.js"
+    "/home/tims/Dev/FastifyProjet/myproject/src/server.js",
+    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/db.js",
+    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/sensible.js",
+    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/sequelize.js",
+    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/support.js",
+    "/home/tims/Dev/FastifyProjet/myproject/src/routes/auth.js",
+    "/home/tims/Dev/FastifyProjet/myproject/src/routes/root.js",
+    "/home/tims/Dev/FastifyProjet/myproject/src/routes/users.js"
   ],
   "sources": {
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/import.mjs": [
@@ -122,11 +129,11 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-all-exports.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-all-exports.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-conditional-value.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-conditional-value.ts"
-    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-all-local-imports.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-all-local-imports.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-conditional-value.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-conditional-value.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/resolve-import.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/resolve-import.ts"
@@ -134,11 +141,11 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/is-windows.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/is-windows.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-conditional-values-list.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/get-conditional-values-list.ts"
-    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/stack/dist/esm/parse.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/stack/src/parse.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/get-conditional-values-list.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/get-conditional-values-list.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/dist/esm/errors.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/src/errors.ts"
@@ -231,9 +238,9 @@
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/processor.ts"
     ]
   },
-  "root": "2c34da82-1e37-4595-b0d3-4681b56d397a",
-  "externalID": "test/example.test.js",
+  "root": "8acbb25a-b8e8-4747-ad2f-bc7fc366cdd4",
+  "externalID": "test/auth.test.js",
   "code": 1,
   "signal": null,
-  "runtime": 6671.795658
+  "runtime": 4764.915842
 }
