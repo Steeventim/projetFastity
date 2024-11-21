@@ -20,7 +20,7 @@ module.exports = function buildFastify() {
   });
 
   // Middleware d'authentification
-  fastify.decorate("authenticate", async (request, reply) => {
+  app.decorate("authenticate", async (request, reply) => {
     try {
       await request.jwtVerify();
     } catch (err) {

@@ -1,251 +1,28 @@
 TAP version 14
-{"level":50,"time":1732021899752,"pid":101961,"hostname":"tims-Latitude-E5470","msg":"Unable to connect to the database:"}
-{"level":30,"time":1732021899845,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-1","req":{"method":"POST","url":"/users","host":"127.0.0.1:35571","remoteAddress":"::ffff:127.0.0.1","remotePort":56398},"msg":"incoming request"}
-{"level":30,"time":1732021899902,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-1","res":{"statusCode":500},"responseTime":54.07971100509167,"msg":"request completed"}
 # Subtest: User routes
-    not ok 1 - Create user route should respond with status 201
+    not ok 1 - fastify.decorate is not a function
       ---
-      compare: ===
-      at:
-        fileName: test/users.test.js
-        lineNumber: 21
-        columnNumber: 5
-        typeName: Test
       stack: |
-        Test.<anonymous> (test/users.test.js:21:5)
+        buildFastify (src/server.js:23:11)
+        Test.<anonymous> (test/users.test.js:7:19)
+      at:
+        fileName: src/server.js
+        lineNumber: 23
+        columnNumber: 11
+        functionName: buildFastify
+      type: TypeError
+      tapCaught: returnedPromiseRejection
       source: |2
-            });
       
-          t.equal(
-        ----^
-            createUserResponse.status,
-            201,
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -201
-        +500
+          // Middleware d'authentification
+          fastify.decorate("authenticate", async (request, reply) => {
+        ----------^
+            try {
+              await request.jwtVerify();
       ...
     
-    not ok 2 - Create user route should return the created user with an ID
-      ---
-      at:
-        fileName: test/users.test.js
-        lineNumber: 26
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:26:5)
-      source: |2
-            "Create user route should respond with status 201"
-          );
-          t.ok(
-        ----^
-            createUserResponse.body.id,
-            "Create user route should return the created user with an ID"
-      ...
-    
-{"level":30,"time":1732021900077,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-2","req":{"method":"GET","url":"/users","host":"127.0.0.1:35901","remoteAddress":"::ffff:127.0.0.1","remotePort":43510},"msg":"incoming request"}
-{"level":30,"time":1732021900087,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-2","res":{"statusCode":500},"responseTime":9.522814005613327,"msg":"request completed"}
-    not ok 3 - Get users route should respond with status 200
-      ---
-      compare: ===
-      at:
-        fileName: test/users.test.js
-        lineNumber: 36
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:36:5)
-      source: |2
-          const getUsersResponse = await supertest(fastify.server).get("/users");
-      
-          t.equal(
-        ----^
-            getUsersResponse.status,
-            200,
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -200
-        +500
-      ...
-    
-    not ok 4 - Get users route should return an array
-      ---
-      at:
-        fileName: test/users.test.js
-        lineNumber: 41
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:41:5)
-      source: |2
-            "Get users route should respond with status 200"
-          );
-          t.ok(
-        ----^
-            Array.isArray(getUsersResponse.body),
-            "Get users route should return an array"
-      ...
-    
-{"level":30,"time":1732021900143,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-3","req":{"method":"GET","url":"/users/undefined","host":"127.0.0.1:40515","remoteAddress":"::ffff:127.0.0.1","remotePort":35668},"msg":"incoming request"}
-{"level":30,"time":1732021900151,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-3","res":{"statusCode":500},"responseTime":7.724858000874519,"msg":"request completed"}
-    not ok 5 - Get user by ID route should respond with status 200
-      ---
-      compare: ===
-      at:
-        fileName: test/users.test.js
-        lineNumber: 51
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:51:5)
-      source: |2
-          );
-      
-          t.equal(
-        ----^
-            getUserResponse.status,
-            200,
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -200
-        +500
-      ...
-    
-    not ok 6 - Get user by ID route should return the correct user
-      ---
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -"testuser"
-        +undefined
-      at:
-        fileName: test/users.test.js
-        lineNumber: 56
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:56:5)
-      source: |2
-            "Get user by ID route should respond with status 200"
-          );
-          t.same(
-        ----^
-            getUserResponse.body.username,
-            "testuser",
-      ...
-    
-{"level":30,"time":1732021900229,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-4","req":{"method":"PUT","url":"/users/undefined","host":"127.0.0.1:44377","remoteAddress":"::ffff:127.0.0.1","remotePort":55996},"msg":"incoming request"}
-{"level":30,"time":1732021900237,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-4","res":{"statusCode":500},"responseTime":7.815117999911308,"msg":"request completed"}
-    not ok 7 - Update user route should respond with status 200
-      ---
-      compare: ===
-      at:
-        fileName: test/users.test.js
-        lineNumber: 71
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:71:5)
-      source: |2
-            });
-      
-          t.equal(
-        ----^
-            updateUserResponse.status,
-            200,
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -200
-        +500
-      ...
-    
-    not ok 8 - Update user route should return the updated user
-      ---
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -"updateduser"
-        +undefined
-      at:
-        fileName: test/users.test.js
-        lineNumber: 76
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:76:5)
-      source: |2
-            "Update user route should respond with status 200"
-          );
-          t.same(
-        ----^
-            updateUserResponse.body.username,
-            "updateduser",
-      ...
-    
-{"level":30,"time":1732021900301,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-5","req":{"method":"DELETE","url":"/users/undefined","host":"127.0.0.1:36707","remoteAddress":"::ffff:127.0.0.1","remotePort":34470},"msg":"incoming request"}
-{"level":30,"time":1732021900307,"pid":101961,"hostname":"tims-Latitude-E5470","reqId":"req-5","res":{"statusCode":500},"responseTime":5.101537995040417,"msg":"request completed"}
-    not ok 9 - Delete user route should respond with status 200
-      ---
-      compare: ===
-      at:
-        fileName: test/users.test.js
-        lineNumber: 87
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:87:5)
-      source: |2
-          );
-      
-          t.equal(
-        ----^
-            deleteUserResponse.status,
-            200,
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -200
-        +500
-      ...
-    
-    not ok 10 - Delete user route should confirm deletion
-      ---
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -"User deleted successfully"
-        +undefined
-      at:
-        fileName: test/users.test.js
-        lineNumber: 92
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/users.test.js:92:5)
-      source: |2
-            "Delete user route should respond with status 200"
-          );
-          t.same(
-        ----^
-            deleteUserResponse.body.message,
-            "User deleted successfully",
-      ...
-    
-    1..10
-not ok 1 - User routes # time=1314.266ms
+    1..1
+not ok 1 - User routes # time=327.416ms
   ---
   at:
     fileName: test/users.test.js

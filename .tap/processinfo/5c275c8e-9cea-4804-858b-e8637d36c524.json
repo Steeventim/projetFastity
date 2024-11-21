@@ -1,8 +1,8 @@
 {
-  "date": "2024-11-19T13:11:35.456Z",
+  "date": "2024-11-21T14:38:26.751Z",
   "argv": [
     "/home/tims/.nvm/versions/node/v22.6.0/bin/node",
-    "/home/tims/Dev/FastifyProjet/myproject/test/users.test.js"
+    "/home/tims/Dev/FastifyProjet/myproject/test/exampleRoute.test.js"
   ],
   "execArgv": [
     "--import=file:///home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
@@ -12,12 +12,12 @@
   ],
   "NODE_OPTIONS": "\"--import=file:///home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/processinfo/dist/esm/import.mjs\"",
   "cwd": "/home/tims/Dev/FastifyProjet/myproject",
-  "pid": 101961,
-  "ppid": 101925,
+  "pid": 66961,
+  "ppid": 66885,
   "parent": null,
-  "uuid": "5599b4d6-d00d-4c5f-919c-d397f23906a7",
+  "uuid": "5c275c8e-9cea-4804-858b-e8637d36c524",
   "files": [
-    "/home/tims/Dev/FastifyProjet/myproject/test/users.test.js",
+    "/home/tims/Dev/FastifyProjet/myproject/test/exampleRoute.test.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/import-loader.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/import.mjs",
@@ -60,28 +60,21 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/glob.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/has-magic.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/ignore.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/dist/esm/index.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/pattern.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/assert-valid-pattern.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/ast.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/escape.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js",
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/dist/esm/index.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/pattern.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/minipass/dist/esm/index.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/processor.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js",
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/loader.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/hooks.mjs",
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/mock-service-client.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/server.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/db.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/sensible.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/sequelize.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/plugins/support.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/routes/auth.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/routes/root.js",
-    "/home/tims/Dev/FastifyProjet/myproject/src/routes/users.js"
+    "/home/tims/Dev/FastifyProjet/myproject/src/server.js"
   ],
   "sources": {
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/@tapjs/mock/dist/esm/import.mjs": [
@@ -204,15 +197,6 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/ignore.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/ignore.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/dist/esm/index.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/src/index.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/pattern.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/pattern.ts"
-    ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/walker.ts"
-    ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/assert-valid-pattern.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/assert-valid-pattern.ts"
     ],
@@ -225,8 +209,14 @@
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/unescape.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/unescape.ts"
     ],
-    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js": [
-      "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/src/index.ts"
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/dist/esm/index.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/src/index.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/pattern.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/pattern.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/dist/esm/walker.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/glob/src/walker.ts"
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/minipass/dist/esm/index.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/minipass/src/index.ts"
@@ -236,11 +226,14 @@
     ],
     "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/dist/esm/brace-expressions.js": [
       "/home/tims/Dev/FastifyProjet/myproject/node_modules/resolve-import/node_modules/minimatch/src/brace-expressions.ts"
+    ],
+    "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/dist/esm/index.js": [
+      "/home/tims/Dev/FastifyProjet/myproject/node_modules/path-scurry/node_modules/lru-cache/src/index.ts"
     ]
   },
-  "root": "5599b4d6-d00d-4c5f-919c-d397f23906a7",
-  "externalID": "test/users.test.js",
+  "root": "5c275c8e-9cea-4804-858b-e8637d36c524",
+  "externalID": "test/exampleRoute.test.js",
   "code": 1,
   "signal": null,
-  "runtime": 4919.989725
+  "runtime": 13324.472882
 }

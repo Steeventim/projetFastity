@@ -1,107 +1,28 @@
 TAP version 14
-{"level":50,"time":1732021899818,"pid":101947,"hostname":"tims-Latitude-E5470","msg":"Unable to connect to the database:"}
-{"level":30,"time":1732021899911,"pid":101947,"hostname":"tims-Latitude-E5470","reqId":"req-1","req":{"method":"POST","url":"/auth/signup","host":"127.0.0.1:45581","remoteAddress":"::ffff:127.0.0.1","remotePort":59838},"msg":"incoming request"}
-{"level":30,"time":1732021899922,"pid":101947,"hostname":"tims-Latitude-E5470","reqId":"req-1","msg":"Route POST:/auth/signup not found"}
-{"level":30,"time":1732021899929,"pid":101947,"hostname":"tims-Latitude-E5470","reqId":"req-1","res":{"statusCode":404},"responseTime":16.367123998701572,"msg":"request completed"}
 # Subtest: Authentication routes
-    not ok 1 - Signup route should respond with status 200
+    not ok 1 - fastify.decorate is not a function
       ---
-      compare: ===
-      at:
-        fileName: test/auth.test.js
-        lineNumber: 17
-        columnNumber: 5
-        typeName: Test
       stack: |
-        Test.<anonymous> (test/auth.test.js:17:5)
+        buildFastify (src/server.js:23:11)
+        Test.<anonymous> (test/auth.test.js:7:15)
+      at:
+        fileName: src/server.js
+        lineNumber: 23
+        columnNumber: 11
+        functionName: buildFastify
+      type: TypeError
+      tapCaught: returnedPromiseRejection
       source: |2
-            .send({ username: "testuser", password: "testpassword" });
       
-          t.equal(
-        ----^
-            signupResponse.status,
-            200,
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -200
-        +404
+          // Middleware d'authentification
+          fastify.decorate("authenticate", async (request, reply) => {
+        ----------^
+            try {
+              await request.jwtVerify();
       ...
     
-    not ok 2 - Signup route should return a token
-      ---
-      at:
-        fileName: test/auth.test.js
-        lineNumber: 22
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/auth.test.js:22:5)
-      source: |2
-            "Signup route should respond with status 200"
-          );
-          t.ok(signupResponse.body.token, "Signup route should return a token");
-        ----^
-      
-          const token = signupResponse.body.token;
-      ...
-    
-{"level":30,"time":1732021900030,"pid":101947,"hostname":"tims-Latitude-E5470","reqId":"req-2","req":{"method":"GET","url":"/auth/protected","host":"127.0.0.1:45269","remoteAddress":"::ffff:127.0.0.1","remotePort":49356},"msg":"incoming request"}
-{"level":30,"time":1732021900031,"pid":101947,"hostname":"tims-Latitude-E5470","reqId":"req-2","msg":"Route GET:/auth/protected not found"}
-{"level":30,"time":1732021900032,"pid":101947,"hostname":"tims-Latitude-E5470","reqId":"req-2","res":{"statusCode":404},"responseTime":1.5390569940209389,"msg":"request completed"}
-    not ok 3 - Protected route should respond with status 200
-      ---
-      compare: ===
-      at:
-        fileName: test/auth.test.js
-        lineNumber: 31
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/auth.test.js:31:5)
-      source: |2
-            .set("Authorization", `Bearer ${token}`);
-      
-          t.equal(
-        ----^
-            protectedResponse.status,
-            200,
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -200
-        +404
-      ...
-    
-    not ok 4 - Protected route should return the correct message
-      ---
-      compare: ===
-      at:
-        fileName: test/auth.test.js
-        lineNumber: 36
-        columnNumber: 5
-        typeName: Test
-      stack: |
-        Test.<anonymous> (test/auth.test.js:36:5)
-      source: |2
-            "Protected route should respond with status 200"
-          );
-          t.equal(
-        ----^
-            protectedResponse.body.message,
-            "This is a protected route",
-      diff: |
-        --- expected
-        +++ actual
-        @@ -1,1 +1,1 @@
-        -This is a protected route
-        +Route GET:/auth/protected not found
-      ...
-    
-    1..4
-not ok 1 - Authentication routes # time=926.789ms
+    1..1
+not ok 1 - Authentication routes # time=515.625ms
   ---
   at:
     fileName: test/auth.test.js
