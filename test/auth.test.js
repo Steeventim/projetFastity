@@ -1,9 +1,9 @@
-// test/auth.test.js
 const tap = require("tap");
 const buildFastify = require("../src/server");
 const supertest = require("supertest");
 
 tap.test("Authentication routes", async (t) => {
+  // @ts-ignore
   const app = buildFastify();
   await app.ready();
 

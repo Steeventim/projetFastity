@@ -8,6 +8,19 @@ const fastify = require("fastify");
 const fastifyEnv = require("@fastify/env");
 const { Sequelize } = require("sequelize");
 
+//log de verification
+try {
+  const pluginsPath = path.join(__dirname, "plugins");
+  const plugins = fs.readdirSync(pluginsPath);
+  console.log("Plugins chargés :", plugins);
+
+  const routesPath = path.join(__dirname, "routes");
+  const routes = fs.readdirSync(routesPath);
+  console.log("Routes chargées :", routes);
+} catch (err) {
+  console.error("Erreur de chargement des fichiers :", err);
+}
+
 // Chargement des variables d'environnement
 const schema = {
   type: "object",
@@ -91,16 +104,26 @@ async function buildFastify() {
   });
 
   // Chargement des plugins Fastify
-  app.register(AutoLoad, {
-    dir: path.join(__dirname, "plugins"),
-    options: { sequelize, models },
-  });
+  try {
+    app.register(AutoLoad, {
+      dir: path.join(__dirname, "plugins"),
+      options: { sequelize, models },
+    });
+  } catch (err) {
+    app.log.error("Erreur lors du chargement des plugins :", err);
+    process.exit(1);
+  }
 
   // Chargement des routes
-  app.register(AutoLoad, {
-    dir: path.join(__dirname, "routes"),
-    options: { sequelize, models },
-  });
+  try {
+    app.register(AutoLoad, {
+      dir: path.join(__dirname, "routes"),
+      options: { sequelize, models },
+    });
+  } catch (err) {
+    app.log.error("Erreur lors du chargement des routes :", err);
+    process.exit(1);
+  }
 
   return app;
 }

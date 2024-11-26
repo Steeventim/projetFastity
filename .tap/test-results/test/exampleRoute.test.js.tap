@@ -1,28 +1,28 @@
 TAP version 14
 # Subtest: Example routes
-    not ok 1 - fastify.decorate is not a function
+    not ok 1 - buildFastify is not a function
       ---
       stack: |
-        buildFastify (src/server.js:23:11)
         Test.<anonymous> (test/exampleRoute.test.js:7:15)
       at:
-        fileName: src/server.js
-        lineNumber: 23
-        columnNumber: 11
-        functionName: buildFastify
+        fileName: test/exampleRoute.test.js
+        lineNumber: 7
+        columnNumber: 15
+        typeName: Test
+        methodName: <anonymous>
+        functionName: Test.<anonymous>
       type: TypeError
       tapCaught: returnedPromiseRejection
-      source: |2
+      source: |
       
-          // Middleware d'authentification
-          fastify.decorate("authenticate", async (request, reply) => {
-        ----------^
-            try {
-              await request.jwtVerify();
+        tap.test("Example routes", async (t) => {
+          const app = buildFastify();
+        --------------^
+          await app.ready();
       ...
     
     1..1
-not ok 1 - Example routes # time=334.455ms
+not ok 1 - Example routes # time=52.283ms
   ---
   at:
     fileName: test/exampleRoute.test.js
