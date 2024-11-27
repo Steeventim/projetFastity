@@ -1,13 +1,13 @@
-"use strict";
-
 const { DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
 
-module.exports = (sequelize) => {
-  return sequelize.define("User", {
+const User = sequelize.define(
+  "User",
+  {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
       autoIncrement: true,
+      primaryKey: true,
     },
     username: {
       type: DataTypes.STRING,
@@ -18,9 +18,29 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    role: {
+    email: {
       type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+    },
+    roleId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "roles", // Table référence "roles"
+        key: "id",
+      },
       allowNull: false,
     },
-  });
+  },
+  {
+    tableName: "users",
+    timestamps: true,
+  }
+);
+
+// Relation avec Role
+User.associate = (models) => {
+  User.belongsTo(models.Role, { foreignKey: "roleId" });
 };
+
+module.exports = User;

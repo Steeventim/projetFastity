@@ -8,8 +8,10 @@
   },
   "scripts": {
     "test": "tap",
-    "start": "fastify start -l info src/server.js",
-    "dev": "fastify start -w -l info -P src/server.js"
+    "start": "fastify start -l info server.js",
+    "dev": "fastify start -w -l info -P server.js",
+    "migrate": "sequelize-cli db:migrate",
+    "seed": "sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",

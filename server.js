@@ -8,18 +8,14 @@ const fastify = require("fastify");
 const fastifyEnv = require("@fastify/env");
 const { Sequelize } = require("sequelize");
 
-//log de verification
-try {
-  const pluginsPath = path.join(__dirname, "plugins");
-  const plugins = fs.readdirSync(pluginsPath);
-  console.log("Plugins chargés :", plugins);
-
-  const routesPath = path.join(__dirname, "routes");
-  const routes = fs.readdirSync(routesPath);
-  console.log("Routes chargées :", routes);
-} catch (err) {
-  console.error("Erreur de chargement des fichiers :", err);
-}
+// Configuration de Sequelize pour la connexion à la base de données
+const sequelize = new Sequelize({
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  dialect: "postgres", // ou 'postgres', 'sqlite', etc.
+});
 
 // Chargement des variables d'environnement
 const schema = {
@@ -40,45 +36,28 @@ async function buildFastify() {
 
   // Charger les variables d'environnement
   await app.register(fastifyEnv, {
-    dotenv: true, // Active le support des fichiers `.env`
+    dotenv: true,
     schema,
   });
-
-  // Initialisation de Sequelize
-  const sequelize = new Sequelize(
-    app.config.DB_NAME,
-    app.config.DB_USER,
-    app.config.DB_PASSWORD,
-    {
-      host: app.config.DB_HOST,
-      dialect: "postgres", // ou 'mysql', 'sqlite', etc.
-      logging: false,
-    }
-  );
-
-  try {
-    await sequelize.authenticate();
-    app.log.info("Connexion à la base de données réussie.");
-  } catch (error) {
-    app.log.error("Échec de la connexion à la base de données :", error);
-    process.exit(1);
-  }
 
   // Synchronisation des modèles
   const models = {};
   const modelsPath = path.join(__dirname, "models");
 
+  // Chargement des modèles
   fs.readdirSync(modelsPath).forEach((file) => {
     const model = require(path.join(modelsPath, file))(sequelize);
     models[model.name] = model;
   });
 
+  // Associer les modèles
   Object.keys(models).forEach((modelName) => {
     if (models[modelName].associate) {
       models[modelName].associate(models);
     }
   });
 
+  // Synchronisation avec la base de données
   await sequelize.sync({ alter: true });
   app.decorate("sequelize", sequelize);
   app.decorate("models", models);
@@ -104,30 +83,21 @@ async function buildFastify() {
   });
 
   // Chargement des plugins Fastify
-  try {
-    app.register(AutoLoad, {
-      dir: path.join(__dirname, "plugins"),
-      options: { sequelize, models },
-    });
-  } catch (err) {
-    app.log.error("Erreur lors du chargement des plugins :", err);
-    process.exit(1);
-  }
+  app.register(AutoLoad, {
+    dir: path.join(__dirname, "plugins"),
+    options: { sequelize, models },
+  });
 
   // Chargement des routes
-  try {
-    app.register(AutoLoad, {
-      dir: path.join(__dirname, "routes"),
-      options: { sequelize, models },
-    });
-  } catch (err) {
-    app.log.error("Erreur lors du chargement des routes :", err);
-    process.exit(1);
-  }
+  app.register(AutoLoad, {
+    dir: path.join(__dirname, "routes"),
+    options: { sequelize, models },
+  });
 
   return app;
 }
 
+// Démarrage du serveur
 if (require.main === module) {
   buildFastify()
     .then((app) => {
