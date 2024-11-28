@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const { sequelize } = require("../config/db");
 
 const UserRole = sequelize.define(
-  "UserRole",
+  "User Role",
   {
     userId: {
       type: DataTypes.INTEGER,
@@ -39,6 +39,20 @@ UserRole.associate = (models) => {
   models.Role.belongsToMany(models.User, {
     through: UserRole,
     foreignKey: "roleId",
+  });
+};
+
+// Méthodes d'instance pour ajouter et supprimer des rôles
+UserRole.addRoleToUser = async (userId, roleId) => {
+  return await UserRole.create({ userId, roleId });
+};
+
+UserRole.removeRoleFromUser = async (userId, roleId) => {
+  return await UserRole.destroy({
+    where: {
+      userId,
+      roleId,
+    },
   });
 };
 

@@ -1,4 +1,4 @@
-const hierarchyService = require("../services/hierarchy");
+const hierarchyService = require("../services/hierarchyService");
 
 module.exports = {
   /**

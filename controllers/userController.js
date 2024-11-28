@@ -1,5 +1,5 @@
 const { User, Role } = require("../models"); // Importer les modèles nécessaires
-const { hashPassword } = require("../services/auth"); // Service pour hacher les mots de passe
+const { hashPassword } = require("../services/authService"); // Service pour hacher les mots de passe
 
 module.exports = {
   /**

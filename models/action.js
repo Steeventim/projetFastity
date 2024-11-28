@@ -1,38 +1,36 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const { sequelize } = require("../config/db");
 
 const Action = sequelize.define(
   "Action",
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
-    type: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    documentId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "users",
-        key: "id",
+      validate: {
+        len: [1, 255], // Validation de la longueur
       },
-      allowNull: false,
     },
-    comment: {
-      type: DataTypes.STRING,
+    description: {
+      type: DataTypes.TEXT,
       allowNull: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
-    tableName: "actions",
-    timestamps: true,
+    timestamps: true, // Active les colonnes createdAt et updatedAt
   }
 );
 

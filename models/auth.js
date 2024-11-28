@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const { sequelize } = require("../config/db");
 
 const Auth = sequelize.define(
   "Auth",
@@ -15,6 +15,9 @@ const Auth = sequelize.define(
     refreshToken: {
       type: DataTypes.STRING,
       allowNull: true,
+      validate: {
+        len: [0, 255], // Limite la longueur du jeton
+      },
     },
   },
   {
@@ -22,5 +25,10 @@ const Auth = sequelize.define(
     timestamps: true,
   }
 );
+
+// Exemple d'association (si vous avez un modèle User)
+Auth.associate = (models) => {
+  Auth.belongsTo(models.User, { foreignKey: "userId" });
+};
 
 module.exports = Auth;

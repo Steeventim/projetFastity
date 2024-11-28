@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const { sequelize } = require("../config/db");
 
 const User = sequelize.define(
   "User",
@@ -26,7 +26,7 @@ const User = sequelize.define(
     roleId: {
       type: DataTypes.INTEGER,
       references: {
-        model: "roles", // Table référence "roles"
+        model: "roles", // La table "roles" doit exister dans la base de données
         key: "id",
       },
       allowNull: false,
@@ -38,7 +38,7 @@ const User = sequelize.define(
   }
 );
 
-// Relation avec Role
+// Définir l'association avec le modèle "Role"
 User.associate = (models) => {
   User.belongsTo(models.Role, { foreignKey: "roleId" });
 };

@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const { sequelize } = require("../config/db");
 
 const Role = sequelize.define(
   "Role",
@@ -13,6 +13,9 @@ const Role = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      validate: {
+        len: [1, 100], // Limite la longueur du nom du rôle
+      },
     },
     description: {
       type: DataTypes.STRING,

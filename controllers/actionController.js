@@ -1,4 +1,4 @@
-const { Action } = require("../models/Action");
+const { Action } = require("../models/action");
 
 const createAction = async (req, reply) => {
   const { type, comment, authorId, documentId } = req.body;

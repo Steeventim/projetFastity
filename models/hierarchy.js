@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const { sequelize } = require("../config/db");
 
 const Hierarchy = sequelize.define(
   "Hierarchy",
@@ -26,5 +26,17 @@ const Hierarchy = sequelize.define(
     timestamps: true,
   }
 );
+
+// Exemple d'association (si vous avez un modèle User)
+Hierarchy.associate = (models) => {
+  Hierarchy.belongsTo(models.User, {
+    foreignKey: "supervisorId",
+    as: "supervisor",
+  });
+  Hierarchy.belongsTo(models.User, {
+    foreignKey: "subordinateId",
+    as: "subordinate",
+  });
+};
 
 module.exports = Hierarchy;
