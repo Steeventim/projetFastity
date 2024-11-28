@@ -1,100 +1,27 @@
 "use strict";
 
 const path = require("node:path");
-const fs = require("node:fs");
 const AutoLoad = require("@fastify/autoload");
 const fastifyJwt = require("@fastify/jwt");
 const fastify = require("fastify");
-const fastifyEnv = require("@fastify/env");
-const { Sequelize } = require("sequelize");
+const { sequelize, initDb } = require("./config/db"); // Configuration de Sequelize
 
-//log de verification
-try {
-  const pluginsPath = path.join(__dirname, "plugins");
-  const plugins = fs.readdirSync(pluginsPath);
-  console.log("Plugins chargés :", plugins);
-
-  const routesPath = path.join(__dirname, "routes");
-  const routes = fs.readdirSync(routesPath);
-  console.log("Routes chargées :", routes);
-} catch (err) {
-  console.error("Erreur de chargement des fichiers :", err);
-}
-
-// Chargement des variables d'environnement
-const schema = {
-  type: "object",
-  required: ["DB_HOST", "DB_NAME", "DB_USER", "DB_PASSWORD", "JWT_SECRET"],
-  properties: {
-    DB_HOST: { type: "string" },
-    DB_NAME: { type: "string" },
-    DB_USER: { type: "string" },
-    DB_PASSWORD: { type: "string" },
-    JWT_SECRET: { type: "string" },
-    PORT: { type: "number", default: 3000 },
-  },
-};
-
-async function buildFastify() {
+// Fonction pour construire et configurer l'application Fastify
+function buildFastify() {
   const app = fastify({ logger: true });
 
-  // Charger les variables d'environnement
-  await app.register(fastifyEnv, {
-    dotenv: true, // Active le support des fichiers `.env`
-    schema,
-  });
-
-  // Initialisation de Sequelize
-  const sequelize = new Sequelize(
-    app.config.DB_NAME,
-    app.config.DB_USER,
-    app.config.DB_PASSWORD,
-    {
-      host: app.config.DB_HOST,
-      dialect: "postgres", // ou 'mysql', 'sqlite', etc.
-      logging: false,
-    }
-  );
-
-  try {
-    await sequelize.authenticate();
-    app.log.info("Connexion à la base de données réussie.");
-  } catch (error) {
-    app.log.error("Échec de la connexion à la base de données :", error);
-    process.exit(1);
-  }
-
-  // Synchronisation des modèles
-  const models = {};
-  const modelsPath = path.join(__dirname, "models");
-
-  fs.readdirSync(modelsPath).forEach((file) => {
-    const model = require(path.join(modelsPath, file))(sequelize);
-    models[model.name] = model;
-  });
-
-  Object.keys(models).forEach((modelName) => {
-    if (models[modelName].associate) {
-      models[modelName].associate(models);
-    }
-  });
-
-  await sequelize.sync({ alter: true });
-  app.decorate("sequelize", sequelize);
-  app.decorate("models", models);
-
-  // Gestion des erreurs globales
+  // Gestionnaire d'erreurs global
   app.setErrorHandler((error, request, reply) => {
-    app.log.error(error);
-    reply.status(error.statusCode || 500).send({ error: error.message });
+    console.error(error); // Loguer l'erreur pour le débogage
+    reply.status(500).send({ error: "Une erreur est survenue." });
   });
 
-  // Configuration du plugin JWT
+  // Plugin JWT pour l'authentification
   app.register(fastifyJwt, {
-    secret: app.config.JWT_SECRET,
+    secret: process.env.JWT_SECRET || "supersecretkey", // Clé secrète JWT
   });
 
-  // Middleware d'authentification
+  // Décorateur pour vérifier les tokens JWT
   app.decorate("authenticate", async (request, reply) => {
     try {
       await request.jwtVerify();
@@ -103,43 +30,42 @@ async function buildFastify() {
     }
   });
 
-  // Chargement des plugins Fastify
-  try {
-    app.register(AutoLoad, {
-      dir: path.join(__dirname, "plugins"),
-      options: { sequelize, models },
-    });
-  } catch (err) {
-    app.log.error("Erreur lors du chargement des plugins :", err);
-    process.exit(1);
-  }
+  // Charger les plugins personnalisés
+  app.register(AutoLoad, {
+    dir: path.join(__dirname, "plugins"),
+    options: { prefix: "/api" }, // Ajouter un préfixe global pour les API
+  });
 
-  // Chargement des routes
-  try {
-    app.register(AutoLoad, {
-      dir: path.join(__dirname, "routes"),
-      options: { sequelize, models },
-    });
-  } catch (err) {
-    app.log.error("Erreur lors du chargement des routes :", err);
-    process.exit(1);
-  }
+  // Charger les routes
+  app.register(AutoLoad, {
+    dir: path.join(__dirname, "routes"),
+    options: { prefix: "/api" }, // Ajouter un préfixe global pour les routes
+  });
 
   return app;
 }
 
-if (require.main === module) {
-  buildFastify()
-    .then((app) => {
-      app.listen({ port: app.config.PORT }, (err, address) => {
-        if (err) {
-          app.log.error(err);
-          process.exit(1);
-        }
-        app.log.info(`Serveur en écoute sur ${address}`);
-      });
-    })
-    .catch((err) => {
-      console.error("Erreur au démarrage du serveur :", err);
-    });
+// Vérifier et initialiser la base de données
+async function startServer() {
+  const app = buildFastify();
+
+  try {
+    // Synchroniser la base de données
+    await initDb();
+
+    // Lancer le serveur sur le port 3000
+    await app.listen({ port: 3000, host: "0.0.0.0" });
+    console.log("Serveur démarré sur http://localhost:3000");
+  } catch (err) {
+    console.error("Erreur au démarrage du serveur :", err);
+    process.exit(1);
+  }
 }
+
+// Si ce fichier est exécuté directement, démarrer le serveur
+if (require.main === module) {
+  startServer();
+}
+
+// Exporter la fonction pour les tests ou les utilisations externes
+module.exports = buildFastify;
