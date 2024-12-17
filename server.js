@@ -1,9 +1,9 @@
 const fastify = require('fastify')();
-const rateLimit = require('express-rate-limit');
-const cors = require('cors');
+const cors = require('fastify-cors');
 const db = require('./models');
 const userRoutes = require('./routes/userRoutes');
-const roleRoutes = require('./routes/roleRoutes');
+const fastifyRoleRoutes = require('./routes/fastifyRoleRoutes');
+const fastifyPermissionRoutes = require('./routes/fastifyPermissionRoutes');
 const structureRoutes = require('./routes/structureRoutes');
 const commentaireRoutes = require('./routes/commentaireRoutes');
 const etapeRoutes = require('./routes/etapeRoutes');
@@ -15,29 +15,33 @@ fastify.register(cors, {
   origin: '*'
 });
 
-// Define the rate limiter
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // Limit each IP to 100 requests per windowMs
+// Use a Fastify-compatible rate limiter
+fastify.register(require('fastify-rate-limit'), {
+  max: 100,
+  timeWindow: '15 minutes'
 });
 
-// Register the rate limiter as a Fastify plugin
-fastify.register(require('fastify-express')).then(() => {
-  fastify.use(limiter);
-});
+// Register the routes with debugging
+try {
+  fastify.register(userRoutes);
+  console.log('User routes registered successfully');
+} catch (err) {
+  console.error('Error registering user routes:', err);
+}
 
-// Register the routes
-fastify.register(userRoutes);
-fastify.register(roleRoutes);
-fastify.register(structureRoutes);
-fastify.register(etapeRoutes);
-fastify.register(commentaireRoutes);
-fastify.register(projetRoutes);
-fastify.register(searchRoutes);
+try {
+  fastify.register(fastifyPermissionRoutes);
+  console.log('Permission routes registered successfully');
+} catch (err) {
+  console.error('Error registering permission routes:', err);
+}
+
+// Repeat for all route files...
 
 // Global Error Handler
 fastify.setErrorHandler((error, request, reply) => {
-  // Handle the error
+  console.error('Error occurred:', error);
+  reply.status(500).send({ error: 'An unexpected error occurred' });
 });
 
 // Start the server
@@ -55,5 +59,4 @@ const start = async () => {
     process.exit(1);
   }
 };
-
 start();

@@ -2,7 +2,7 @@ module.exports = {
   development: {
     username: 'postgres',
     password: 'mkounga10',
-    database: 'project',
+    database: 'cenadi',
     host: 'localhost',
     dialect: 'postgres'
   },
@@ -16,7 +16,7 @@ module.exports = {
   production: {
     username: 'postgres',
     password: 'mkounga10',
-    database: 'project',
+    database: 'cenadi',
     host: 'localhost',
     dialect: 'postgres'
   }

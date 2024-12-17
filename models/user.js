@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
-const validator = require('validator');
+const passwordComplexity = require('joi-password-complexity');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -31,17 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     Password: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: {
-          args: [8, 128],
-          msg: 'Password must be between 8 and 128 characters'
-        },
-        isStrongPassword: {
-          args: [8, 128],
-          msg: 'Password must include uppercase, lowercase, number, and special character'
-        }
-      }
+      allowNull: false
     },
     Telephone: {
       type: DataTypes.STRING,
@@ -59,17 +49,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     IsActive: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true
+      defaultValue: true,
+      allowNull: true
     }
   }, {
     hooks: {
       beforeCreate: async (user) => {
-        const salt = await bcrypt.genSalt(parseInt(process.env.PASSWORD_SALT_ROUNDS) || 12);
+        const saltRounds = parseInt(process.env.PASSWORD_SALT_ROUNDS, 10) || 12;
+        const salt = await bcrypt.genSalt(saltRounds);
         user.Password = await bcrypt.hash(user.Password, salt);
       },
       beforeUpdate: async (user) => {
         if (user.changed('Password')) {
-          const salt = await bcrypt.genSalt(parseInt(process.env.PASSWORD_SALT_ROUNDS) || 12);
+          const saltRounds = parseInt(process.env.PASSWORD_SALT_ROUNDS, 10) || 12;
+          const salt = await bcrypt.genSalt(saltRounds);
           user.Password = await bcrypt.hash(user.Password, salt);
         }
       }
@@ -77,18 +70,16 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   const userSchema = Joi.object({
-    NomUser: Joi.string().required().min(2).max(50),
-    PrenomUser: Joi.string().optional().min(2).max(50),
+    NomUser: Joi.string().min(2).max(50).required(),
+    PrenomUser: Joi.string().min(2).max(50).optional(),
     Email: Joi.string().email().required(),
-    Password: Joi.string()
-      .required()
-      .min(8)
-      .max(128)
-      .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'))
-      .message('Password must include uppercase, lowercase, number, and special character'),
+    Password: passwordComplexity().required(),
     Telephone: Joi.string()
-      .required()
-      .pattern(new RegExp('^[+]?[(]?[0-9]{3}[)]?[-\\s.]?[0-9]{3}[-\\s.]?[0-9]{4,6}$'))
+      .pattern(new RegExp('^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$'))
+      .message('Invalid phone number format')
+      .required(),
+    LastLogin: Joi.date().optional(),
+    IsActive: Joi.boolean().optional()
   });
 
   User.validate = (user) => userSchema.validate(user);
